@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruSpan — Social Media Marketing Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1117;
+    --ink-muted: #4a4d5a;
+    --ink-faint: #8c909e;
+    --surface: #ffffff;
+    --surface-alt: #f7f8fa;
+    --surface-dark: #0f1117;
+    --accent: #1a6ef5;
+    --accent-light: #e8f0fe;
+    --gold: #d4a843;
+    --gold-light: #fdf6e3;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --max: 880px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand { font-weight: 600; font-size: 15px; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink-muted); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    background: var(--surface-dark);
+    color: #fff;
+    padding: 100px 2rem 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,110,245,0.25), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(44px, 7vw, 72px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 em { font-style: italic; color: rgba(255,255,255,0.55); }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+  }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .pill {
+    padding: 6px 16px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 100px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+
+  /* SECTIONS */
+  section { padding: 88px 2rem; }
+  .container { max-width: var(--max); margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--ink-faint); }
+  .section-sub {
+    font-size: 17px;
+    color: var(--ink-muted);
+    max-width: 560px;
+    font-weight: 300;
+    margin-bottom: 56px;
+  }
+
+  /* PACKAGE GRID */
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .package-item {
+    background: var(--surface);
+    padding: 32px 28px;
+    transition: background 0.15s;
+  }
+  .package-item:hover { background: var(--surface-alt); }
+  .pkg-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 12px;
+    font-weight: 400;
+    color: #c8d8f8;
+  }
+  .pkg-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+  .pkg-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+  /* AFFILIATE */
+  .affiliate-section { background: var(--surface-alt); }
+  .ugc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .ugc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    position: relative;
+  }
+  .ugc-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .ugc-card h3 { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+  .ugc-card p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+  /* FUNNEL */
+  .funnel-stage {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0 32px;
+    margin-bottom: 2px;
+    background: var(--surface-alt);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .funnel-stage + .funnel-stage { margin-top: 16px; }
+  .stage-label {
+    padding: 32px 24px;
+    background: var(--surface-dark);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .stage-label span:first-child {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.45);
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .stage-label strong { font-size: 17px; font-weight: 600; }
+  .stage-channels { padding: 28px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .channel-row { display: flex; gap: 12px; align-items: flex-start; }
+  .channel-tag {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .tag-organic { background: #e3f5e8; color: #1a6b2f; }
+  .tag-boosted { background: #e8f0fe; color: #1a4db5; }
+  .tag-meta { background: #fdf0e3; color: #8a4b00; }
+  .channel-text { font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+    background: var(--border-strong);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 40px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -33px;
+    top: 4px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--surface-dark);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .tl-week {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .tl-title { font-weight: 600; font-size: 18px; margin-bottom: 6px; }
+  .tl-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.6; max-width: 520px; }
+
+  /* ONGOING RHYTHM */
+  .rhythm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .rhythm-grid { grid-template-columns: 1fr; } }
+  .rhythm-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .rhythm-header {
+    padding: 18px 20px 14px;
+    background: var(--surface-dark);
+    color: #fff;
+  }
+  .rhythm-header span {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .rhythm-header strong { font-size: 16px; }
+  .rhythm-body { padding: 20px; background: var(--surface); }
+  .rhythm-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .rhythm-body li { font-size: 14px; color: var(--ink-muted); display: flex; gap: 8px; align-items: flex-start; }
+  .rhythm-body li::before { content: '—'; color: var(--ink-faint); flex-shrink: 0; }
+
+  /* COMPARISON */
+  .comparison-section { background: var(--surface-dark); color: #fff; }
+  .comparison-section .section-label { color: rgba(255,255,255,0.4); }
+  .comparison-section .section-title { color: #fff; }
+  .comparison-section .section-title em { color: rgba(255,255,255,0.3); }
+  .comparison-section .section-sub { color: rgba(255,255,255,0.5); }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .compare-table th {
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .compare-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #fff;
+  }
+  .compare-table td:first-child { color: rgba(255,255,255,0.9); font-size: 14px; }
+  .compare-table .us { color: #fff; font-weight: 600; }
+  .compare-table .us-check { color: #5ddd8b; font-weight: 700; }
+  .compare-table .them-x { color: rgba(255,255,255,0.75); }
+  .price-row td { padding-top: 24px !important; }
+  .price-us {
+    font-size: 26px;
+    font-family: 'DM Serif Display', serif;
+    color: #fff;
+    font-weight: 400;
+  }
+  .price-them {
+    font-size: 20px;
+    font-family: 'DM Serif Display', serif;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+    text-decoration: line-through;
+  }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .pricing-card {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .pricing-card.featured { border-color: var(--accent); border-width: 2px; }
+  .pricing-head {
+    padding: 36px 32px 28px;
+    background: var(--surface-dark);
+    color: #fff;
+  }
+  .pricing-card.featured .pricing-head { background: var(--accent); }
+  .pricing-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .pricing-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .pricing-amount sup { font-size: 24px; vertical-align: top; margin-top: 10px; }
+  .pricing-amount sub { font-size: 16px; font-family: 'DM Sans', sans-serif; font-weight: 300; opacity: 0.6; }
+  .pricing-name { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 8px; font-weight: 300; }
+  .pricing-body { padding: 28px 32px; background: var(--surface); }
+  .pricing-body ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .pricing-body li { font-size: 14px; color: var(--ink-muted); display: flex; gap: 10px; align-items: flex-start; }
+  .pricing-body li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 700; }
+  .pricing-footer { padding: 24px 32px; background: var(--surface-alt); border-top: 1px solid var(--border); }
+  .pricing-footer p { font-size: 13px; color: var(--ink-faint); }
+
+  /* TOTAL */
+  .total-bar {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .total-label { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-muted); }
+  .total-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .total-amount span { font-size: 18px; font-family: 'DM Sans', sans-serif; font-weight: 300; color: var(--ink-muted); margin-left: 4px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface-dark);
+    color: rgba(255,255,255,0.4);
+    padding: 40px 2rem;
+    text-align: center;
+    font-size: 13px;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    .compare-table th:nth-child(2),
+    .compare-table td:nth-child(2) { display: none; }
+    .funnel-stage { grid-template-columns: 1fr; }
+    .stage-label { padding: 16px 20px; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">TruSpan · Social Proposal</a>
+    <ul class="nav-links">
+      <li><a href="#package">Package</a></li>
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">Prepared for TruSpan</span>
+  <h1>Social Media<br><em>Marketing</em> Proposal</h1>
+  <p class="hero-sub">Building brand personality, community, and engagement that compounds over time.</p>
+  <div class="hero-pills">
+    <span class="pill">Instagram · TikTok · Facebook</span>
+    <span class="pill">4–5× weekly posting</span>
+    <span class="pill">Affiliate & UGC Program</span>
+    <span class="pill">On-demand local filming</span>
+  </div>
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+    <span style="font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 400;">Prepared by <strong style="color: #fff; font-weight: 600;">Kyndall Russell</strong></span>
+    <span style="font-size: 14px; color: rgba(255,255,255,0.3);">·</span>
+    <span style="font-size: 14px; color: rgba(255,255,255,0.6);">May 27, 2026</span>
+  </div>
+</div>
+
+<!-- PACKAGE -->
+<section id="package">
+  <div class="container">
+    <span class="section-label">What's included</span>
+    <h2 class="section-title">Everything in <em>your package</em></h2>
+    <p class="section-sub">A complete social ecosystem — strategy, creation, and community — built specifically for Truspan.</p>
+
+    <div class="package-grid">
+      <div class="package-item">
+        <div class="pkg-num">01</div>
+        <div class="pkg-title">Social Strategy</div>
+        <p class="pkg-desc">Custom content pillars, audience research & platform game plan built specifically for TruSpan.</p>
+      </div>
+      <div class="package-item">
+        <div class="pkg-num">02</div>
+        <div class="pkg-title">Content Creation</div>
+        <p class="pkg-desc">Photo, video & graphics for Reels, TikToks, Stories & static posts across all platforms.</p>
+      </div>
+      <div class="package-item">
+        <div class="pkg-num">03</div>
+        <div class="pkg-title">On-Demand Local Filming</div>
+        <p class="pkg-desc">Local, ready to shoot product launches, restocks, events & real-time moments — fast.</p>
+      </div>
+      <div class="package-item">
+        <div class="pkg-num">04</div>
+        <div class="pkg-title">4–5× Weekly Posting</div>
+        <p class="pkg-desc">Caption writing, scheduling & publishing on Instagram, TikTok & Facebook every week.</p>
+      </div>
+      <div class="package-item">
+        <div class="pkg-num">05</div>
+        <div class="pkg-title">Community Engagement</div>
+        <p class="pkg-desc">Active DM, comment & conversation management to build a loyal brand community.</p>
+      </div>
+      <div class="package-item">
+        <div class="pkg-num">06</div>
+        <div class="pkg-title">Affiliate & UGC Program</div>
+        <p class="pkg-desc">Full creation & execution of an affiliate and user-generated content program. Creators, commissions & authentic social proof.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE -->
+<section class="affiliate-section">
+  <div class="container">
+    <span class="section-label">Affiliate & UGC</span>
+    <h2 class="section-title">Real people.<br><em>Real results.</em></h2>
+    <p class="section-sub">The growth engine powering everything behind the scenes.</p>
+
+    <div class="ugc-grid">
+      <div class="ugc-card">
+        <div class="ugc-icon">👥</div>
+        <h3>Creator Recruitment</h3>
+        <p>Micro-influencers in wellness, longevity & biohacking — identified and onboarded to align with TruSpan's mission.</p>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-icon">📲</div>
+        <h3>UGC Content Production</h3>
+        <p>Creators produce authentic video and photo content featuring your products — usable as organic posts and paid ad creative.</p>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-icon">🔗</div>
+        <h3>Affiliate Link & Commission</h3>
+        <p>Each creator gets a unique affiliate link with a trackable commission structure. Incentivizes them to sell, not just post.</p>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-icon">📊</div>
+        <h3>Performance Tracking</h3>
+        <p>We track clicks, conversions & revenue per creator. Scale what works, cut what doesn't.</p>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-icon">💬</div>
+        <h3>Social Proof Engine</h3>
+        <p>UGC content builds trust faster than brand content. Real customers talking about TruSpan converts better than any ad.</p>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-icon">🚀</div>
+        <h3>Compound Growth</h3>
+        <p>Every creator brings their own audience. Your reach grows without increasing ad spend — organic amplification at scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy">
+  <div class="container">
+    <span class="section-label">Paid Advertising</span>
+    <h2 class="section-title">How it all<br><em>works together</em></h2>
+    <p class="section-sub">Organic + Boosted Posts + Meta Ads + UGC = compounding growth at every stage of the funnel.</p>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+
+      <div class="funnel-stage">
+        <div class="stage-label">
+          <span>Top of Funnel</span>
+          <strong>Awareness</strong>
+        </div>
+        <div class="stage-channels">
+          <div class="channel-row">
+            <span class="channel-tag tag-organic">Organic</span>
+            <span class="channel-text">Lifestyle reels, educational posts, brand story content</span>
+          </div>
+          <div class="channel-row">
+            <span class="channel-tag tag-boosted">Boosted</span>
+            <span class="channel-text">Boost high-performing reels to expand reach beyond followers. Great for page growth.</span>
+          </div>
+          <div class="channel-row">
+            <span class="channel-tag tag-meta">Meta + UGC</span>
+            <span class="channel-text">Broad cold audience campaigns (longevity, wellness, biohacking). Video view objective to build warm audiences. Creator intro content — authentic first impressions of TruSpan.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="stage-label">
+          <span>Mid Funnel</span>
+          <strong>Engagement</strong>
+        </div>
+        <div class="stage-channels">
+          <div class="channel-row">
+            <span class="channel-tag tag-organic">Organic</span>
+            <span class="channel-text">UGC reposts, community polls, product education, testimonials</span>
+          </div>
+          <div class="channel-row">
+            <span class="channel-tag tag-boosted">Boosted</span>
+            <span class="channel-text">Boost top UGC posts to extend social proof to engaged followers.</span>
+          </div>
+          <div class="channel-row">
+            <span class="channel-tag tag-meta">Meta + UGC</span>
+            <span class="channel-text">Retarget video viewers & profile visitors. Carousel ads to product pages. Lookalike audiences. Creator review content & before/afters shared natively.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="stage-label">
+          <span>Bottom Funnel</span>
+          <strong>Conversion</strong>
+        </div>
+        <div class="stage-channels">
+          <div class="channel-row">
+            <span class="channel-tag tag-organic">Organic</span>
+            <span class="channel-text">Limited promos, direct CTAs, product launch content</span>
+          </div>
+          <div class="channel-row">
+            <span class="channel-tag tag-boosted">Boosted</span>
+            <span class="channel-text">Boost promo posts to followers with strong discount/CTA content.</span>
+          </div>
+          <div class="channel-row">
+            <span class="channel-tag tag-meta">Meta + UGC</span>
+            <span class="channel-text">Retarget website visitors & cart abandoners. Conversion-objective ads. A/B test creative to lower CPA. Affiliate link content — every sale tracked to the creator.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" style="background: var(--surface-alt);">
+  <div class="container">
+    <span class="section-label">The Plan</span>
+    <h2 class="section-title">Your first<br><em>30 days</em></h2>
+    <p class="section-sub">A clear onboarding structure so you're never wondering what happens next.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-week">Week 1</div>
+        <div class="tl-title">Intake & Strategy</div>
+        <p class="tl-desc">Deep-dive brand session. Content pillars, platform strategy & voice established for TruSpan.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-week">Week 2</div>
+        <div class="tl-title">Build Content & Creator Plan</div>
+        <p class="tl-desc">Strategy locked. Creator outreach begins. First affiliate partners identified and onboarded.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-week">Week 3</div>
+        <div class="tl-title">Shoot & Go Live</div>
+        <p class="tl-desc">Local filming begins. First posts go live at 4–5×/week. UGC briefs sent to creators.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-week">Week 4</div>
+        <div class="tl-title">Full System Running</div>
+        <p class="tl-desc">All platforms active. Paid campaigns launched. Affiliate links live. Reporting dashboard set.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px;">
+      <h3 style="font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; margin-bottom: 32px;">Beyond 30 days — <em style="font-style:italic; color: var(--ink-faint);">the ongoing rhythm</em></h3>
+      <div class="rhythm-grid">
+        <div class="rhythm-card">
+          <div class="rhythm-header">
+            <span>Every Week</span>
+            <strong>Content & Community</strong>
+          </div>
+          <div class="rhythm-body">
+            <ul>
+              <li>4–5 posts published per platform</li>
+              <li>DMs, comments & conversations managed</li>
+              <li>Trending audios & formats monitored</li>
+              <li>On-demand filming as needed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rhythm-card">
+          <div class="rhythm-header">
+            <span>Every Month</span>
+            <strong>Strategy & Reporting</strong>
+          </div>
+          <div class="rhythm-body">
+            <ul>
+              <li>Performance recap delivered</li>
+              <li>Data-driven content adjustments</li>
+              <li>Content calendar adjusted by data</li>
+              <li>Affiliate/UGC creator check-ins</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rhythm-card">
+          <div class="rhythm-header">
+            <span>Ongoing</span>
+            <strong>Growth & Optimization</strong>
+          </div>
+          <div class="rhythm-body">
+            <ul>
+              <li>Meta ad campaigns tested & scaled</li>
+              <li>New creators recruited into UGC program</li>
+              <li>Audience lookalikes refined from buyers</li>
+              <li>A/B testing to lower cost per result</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 24px; font-size: 14px; color: var(--ink-faint); font-style: italic;">No lock-in. Strategy evolves with your data. You will always know exactly what is working and what is next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison-section">
+  <div class="container">
+    <span class="section-label">Why us</span>
+    <h2 class="section-title">Why pay $500 more<br><em>than the competition?</em></h2>
+    <p class="section-sub">More content. Boots on the ground. A full creator program. Here's what that actually looks like.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Them</th>
+          <th>Us</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Posts / week per platform</td>
+          <td class="them-x">3× per platform</td>
+          <td class="us">4–5× per platform</td>
+        </tr>
+        <tr>
+          <td>Local availability</td>
+          <td class="them-x">✕ 5+ hours away</td>
+          <td class="us-check">✓ We're here</td>
+        </tr>
+        <tr>
+          <td>On-demand filming</td>
+          <td class="them-x">✕ Not offered</td>
+          <td class="us-check">✓ Included</td>
+        </tr>
+        <tr>
+          <td>Affiliate & UGC program</td>
+          <td class="them-x">✕ Not offered</td>
+          <td class="us-check">✓ Full build-out</td>
+        </tr>
+        <tr class="price-row">
+          <td>Monthly investment</td>
+          <td><span class="price-them">$4,000</span></td>
+          <td><span class="price-us">$4,500 <span style="font-size:16px; font-family:'DM Sans',sans-serif; font-weight:300; opacity:0.6;">/mo</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <span class="section-label">Investment</span>
+    <h2 class="section-title">Transparent pricing.<br><em>Real results.</em></h2>
+    <p class="section-sub">Two straightforward line items. No hidden fees, no surprises.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <div class="pricing-head">
+          <div class="pricing-badge">Core Package</div>
+          <div class="pricing-amount"><sup>$</sup>4,000<sub>/mo</sub></div>
+          <div class="pricing-name">Social Media Management + Affiliate/UGC</div>
+        </div>
+        <div class="pricing-body">
+          <ul>
+            <li>Instagram + TikTok + Facebook</li>
+            <li>4–5 posts per week per platform</li>
+            <li>On-demand & local filming included</li>
+            <li>Strategy · Design · Copy · Community</li>
+            <li>Affiliate/UGC program creation & execution</li>
+          </ul>
+        </div>
+        <div class="pricing-footer">
+          <p>Everything you need to grow from day one.</p>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-head">
+          <div class="pricing-badge">Optional Add-on</div>
+          <div class="pricing-amount"><sup>$</sup>500<sub>/mo</sub></div>
+          <div class="pricing-name">Meta Paid Ads Management</div>
+        </div>
+        <div class="pricing-body">
+          <ul>
+            <li>Boosted post management</li>
+            <li>Meta Ads Manager campaigns</li>
+            <li>Retargeting & cold prospecting</li>
+            <li>UGC creative amplification</li>
+            <li>Ad spend billed directly from Meta</li>
+          </ul>
+        </div>
+        <div class="pricing-footer">
+          <p>Ad spend billed directly from Meta — not marked up.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-bar">
+      <div>
+        <div class="total-label">Total Monthly Investment</div>
+        <p style="font-size:14px; color: var(--ink-faint); margin-top:4px;">Core package + Meta Ads add-on</p>
+      </div>
+      <div class="total-amount">$4,500 <span>/month</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>TruSpan Social Media Marketing Proposal</strong><br>
+  Building brand personality · community · engagement
+</footer>
+
+</body>
+</html>
